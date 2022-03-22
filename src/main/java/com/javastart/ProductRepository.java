@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class ProductRepository {
@@ -35,11 +36,11 @@ public class ProductRepository {
         return result;
     }
 
-    Product findById(int id) {
+    Optional<Product> findById(int id) {
         if (id > products.size() - 1) {
-            return null;
+            return Optional.empty();
         } else {
-            return products.get(id - 1);
+            return Optional.of(products.get(id - 1));
         }
     }
 }
